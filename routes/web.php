@@ -37,7 +37,7 @@ Route::get('hello', function () {
     return view('hello',compact('name'));
 });
 
-
+/*
 Route::get('/tasks', function () {
     //$tasks = DB::table('tasks')->get();
     //$tasks = App\Task::all();
@@ -51,3 +51,7 @@ Route::get('/tasks/{task}', function ($id) {
     $task = App\Task::find($id);
     return view('tasks.show',compact('task'));
 });
+*/
+
+Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/{task}', 'TasksController@show');
