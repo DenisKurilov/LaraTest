@@ -11,47 +11,12 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-/*
-Route::get('hello', function () {
-    return view('hello',[
-        'name' => 'Alex'
-    ]);
-});
 */
 
+Route::get('/','PostsController@index');
 
-/*
-Route::get('hello', function () {
-    return view('hello')->with('name','John');
-});
-*/
-
-
-Route::get('hello', function () {
-    $name = 'Den';
-    return view('hello',compact('name'));
-});
-
-/*
-Route::get('/tasks', function () {
-    //$tasks = DB::table('tasks')->get();
-    //$tasks = App\Task::all();
-    $tasks = App\Task::incomplete();
-    return view('tasks.index',compact('tasks'));
-});
-
-
-Route::get('/tasks/{task}', function ($id) {
-    //$task = DB::table('tasks')->find($id);
-    $task = App\Task::find($id);
-    return view('tasks.show',compact('task'));
-});
-*/
-
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');
+Route::get('/posts/{post}','PostsController@show');
