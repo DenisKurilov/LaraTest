@@ -14,3 +14,37 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/*
+Route::get('hello', function () {
+    return view('hello',[
+        'name' => 'Alex'
+    ]);
+});
+*/
+
+
+/*
+Route::get('hello', function () {
+    return view('hello')->with('name','John');
+});
+*/
+
+
+Route::get('hello', function () {
+    $name = 'Den';
+    return view('hello',compact('name'));
+});
+
+
+Route::get('/tasks', function () {
+    $tasks = DB::table('tasks')->get();
+    return view('tasks.index',compact('tasks'));
+});
+
+
+Route::get('/tasks/{task}', function ($id) {
+    $task = DB::table('tasks')->find($id);
+    return view('tasks.show',compact('task'));
+});
