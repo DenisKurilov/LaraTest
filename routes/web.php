@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 
 
+// test route
 Route::any('/page1', function() {
     echo 'page1';
 });
 
 
 
+// route with params
 Route::any('/post/{var?}/{id?}/{str?}', function( $var=null, $id=null, $str=null ) {
 
     echo 'post<br>var=['.$var.'] <br>id=['.$id.'] <br>str=['.$str.']';
@@ -33,6 +35,7 @@ Route::any('/post/{var?}/{id?}/{str?}', function( $var=null, $id=null, $str=null
 
 
 
+// route with group
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('page1', function () {
@@ -47,9 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-
-// test names
-
+// test names for route
 Route::any('/test/{id?}', ['as'=>'tst', function($id=null) {
     echo 'id=['.$id.']';
 }]);
@@ -69,9 +70,6 @@ Route::any('/goto', function() {
 
 
 //test name 2
-
-
-
 Route::any('/named', function() {
     echo 'its a named page<br>';
     $curRoute = Route::current();
@@ -83,5 +81,26 @@ Route::any('/named', function() {
 Route::any('/goto2', function() {
     return redirect()->route('my-page');
 });
+
+
+
+
+
+
+
+
+// ----  controllers ------
+// php artisan make:controller FirstController
+
+Route::get('/article/{id?}','FirstController@show');
+
+Route::get('/article-a/{id?}',['uses' => 'FirstController@testName', 'as' => 'test.name']);
+
+
+
+
+
+
+
 
 
