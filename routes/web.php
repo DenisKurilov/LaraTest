@@ -99,7 +99,12 @@ Route::get('/article-a/{id?}',['uses' => 'FirstController@testName', 'as' => 'te
 
 
 
-
+// ----  middelware ------
+// php artisan make:controller MyMiddleController
+// php artisan make:middleware MyMiddleware
+Route::get('/my-middle/show/{id?}',['uses'          => 'MyMiddleController@show',
+                                    'as'            => 'my.middle.show',
+                                    'middleware'    => 'my.middleware']);
 
 
 
