@@ -11,6 +11,16 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+
+Route::get('/', ['uses' => 'HomeController@show', 'as' => 'home']);
+
+Route::get('/page', ['uses' => 'PageController@show', 'as' => 'page']);
+
+Route::get('/article/{id?}', ['uses' => 'ArticleController@show', 'as' => 'article']);
+
+Route::get('/about', ['uses' => 'AboutController@show', 'as' => 'about']);
